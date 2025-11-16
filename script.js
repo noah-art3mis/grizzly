@@ -36,7 +36,7 @@ contactForm.addEventListener('submit', async (e) => {
     } catch (error) {
         console.error('EmailJS Error:', error);
         formMessage.textContent =
-            'Sorry, there was an error sending your message. Please try again or contact us directly.';
+            'Sorry, there was an error sending your message. Please try again or contact us directly at hello@grizzly-enterprise.com.';
         formMessage.className = 'form-message error';
         formMessage.style.display = 'block';
     } finally {
