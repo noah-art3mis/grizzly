@@ -1,10 +1,10 @@
 // EmailJS Configuration
 const EMAILJS_SERVICE_ID = 'service_w5kpsl7';
 const EMAILJS_TEMPLATE_ID = 'template_fo8i5za';
-const EMAILJS_PUBLIC_KEY = '0Zdr-9RuUMbK_QFdq';
+const EMAILJS_PUBLIC_KEY = '1jhviCMmgulcZ7Cy0';
 
 // Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
