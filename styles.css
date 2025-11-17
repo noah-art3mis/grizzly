@@ -47,6 +47,7 @@
 
 html {
     scroll-behavior: smooth;
+    color-scheme: light;
 }
 
 body {
@@ -208,7 +209,7 @@ body {
 
 .service-title {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
-    color: var(--gold);
+    color: var(--gold) !important;
     margin-bottom: 1.5rem;
     font-weight: 900;
     text-transform: uppercase;
@@ -223,7 +224,7 @@ body {
 }
 
 .service-list li {
-    color: var(--silver);
+    color: var(--silver) !important;
     font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 700;
     text-transform: uppercase;
