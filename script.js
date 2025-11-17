@@ -1,7 +1,7 @@
 // EmailJS Configuration
-const EMAILJS_SERVICE_ID = 'service_w5kpsl7';
-const EMAILJS_TEMPLATE_ID = 'template_fo8i5za';
-const EMAILJS_PUBLIC_KEY = '1jhviCMmgulcZ7Cy0';
+const EMAILJS_SERVICE_ID = 'service_h3re2nr';
+const EMAILJS_TEMPLATE_ID = 'template_xyv1oh7';
+const EMAILJS_PUBLIC_KEY = 'c_Bcr6sxYwxMUiamZ';
 
 // Initialize EmailJS
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -22,6 +22,7 @@ contactForm.addEventListener('submit', async (e) => {
         const formData = {
             name: contactForm.name.value,
             email: contactForm.email.value,
+            phone: contactForm.phone.value || 'Not provided',
             message: contactForm.message.value,
             time: new Date().toLocaleString(),
         };
@@ -36,7 +37,7 @@ contactForm.addEventListener('submit', async (e) => {
     } catch (error) {
         console.error('EmailJS Error:', error);
         formMessage.textContent =
-            'Sorry, there was an error sending your message. Please try again or contact us directly at hello@grizzly-enterprise.com.';
+            'Sorry, there was an error sending your message. Please try again or contact us directly at grizzlydashenterprise@gmail.com.';
         formMessage.className = 'form-message error';
         formMessage.style.display = 'block';
     } finally {

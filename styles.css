@@ -207,18 +207,39 @@ body {
 }
 
 .service-title {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--gold);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: clamp(0.1rem, 0.8vw, 0.4rem);
+    line-height: 1.1;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    color: var(--silver);
+    font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
 }
 
-.service-description {
-    color: var(--silver);
-    line-height: 1.8;
-    font-size: 1rem;
+.service-list li::before {
+    content: '•';
+    color: var(--gold);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    line-height: 1;
 }
 
 /* About Section */
@@ -308,6 +329,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-weight: 500;
+}
+
+.form-group label .optional {
+    text-transform: none;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--silver-50);
 }
 
 .form-group input,
