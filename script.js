@@ -13,12 +13,6 @@ contactForm.addEventListener('submit', async (e) => {
     try {
         const formData = new FormData(contactForm);
 
-        // Add time if you want it in the email
-        formData.append(
-            '_subject',
-            'New Contact Form Submission from ' + formData.get('name')
-        );
-
         const response = await fetch(contactForm.action, {
             method: 'POST',
             body: formData,
@@ -27,6 +21,8 @@ contactForm.addEventListener('submit', async (e) => {
             },
         });
 
+        const data = await response.json();
+
         if (response.ok) {
             formMessage.textContent =
                 'Thank you! Your message has been sent successfully.';
@@ -34,13 +30,22 @@ contactForm.addEventListener('submit', async (e) => {
             formMessage.style.display = 'block';
             contactForm.reset();
         } else {
-            const data = await response.json();
+            // Handle Formspree validation errors
+            if (data.errors) {
+                const errorMessages = data.errors
+                    .map((err) => err.message || err)
+                    .join(', ');
+                throw new Error(`Validation errors: ${errorMessages}`);
+            }
             throw new Error(data.error || 'Form submission failed');
         }
     } catch (error) {
         console.error('Form Error:', error);
-        formMessage.textContent =
-            'Sorry, there was an error sending your message. Please try again or contact us directly at grizzlydashenterprise@gmail.com.';
+        const errorMessage =
+            error.message && error.message.includes('Validation errors')
+                ? error.message
+                : 'Sorry, there was an error sending your message. Please try again or contact us directly at grizzlydashenterprise@gmail.com.';
+        formMessage.textContent = errorMessage;
         formMessage.className = 'form-message error';
         formMessage.style.display = 'block';
     } finally {
